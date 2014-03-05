@@ -25,11 +25,12 @@ require 'mkmf'
 
 def message!(important_message)
   message important_message
-  if !$stdout.tty? && File.chardev?('/dev/tty')
-    File.open('/dev/tty', 'w') { |tty|
-      tty.print important_message
-    }
-  end
+  #tmp ignore to avoid jenkins blowing up :()
+  #if !$stdout.tty? && File.chardev?('/dev/tty')
+  #  File.open('/dev/tty', 'w') { |tty|
+  #    tty.print important_message
+  #  }
+  #end
 end
 
 RbConfig::MAKEFILE_CONFIG['CC'] = ENV['CC'] if ENV['CC']
